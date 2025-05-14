@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ report_type }} Report</title>
+</head>
+<body>
+    <h1>{{ report_type }} Report for {{ email }}</h1>
+    <p>Dear {{ email }},</p>
+    <p>Here is your {{ report_type.lower() }} report:</p>
+    <h2>User Details</h2>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Last Login: {{ user.last_login_at }}</p>
+    <p>Total Logins: {{ total_logins }}</p>
+    <p>Roles: {% for role in user.roles %}{{ role.name }} {% endfor %}</p>
+
+    <h2>Requested Books</h2>
+    <ul>
+    {% for request in requested_books %}
+        <li>{{ request.ebooks.book_name }} - {{ request.status }} (Requested at: {{ request.requested_at }})</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Issued Books</h2>
+    <ul>
+    {% for issue in issued_books %}
+        <li>{{ issue.ebooks.book_name }} - {{ issue.status }} (Issued at: {{ issue.issued_at }}, Return Before: {{ issue.return_before }})</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Feedback Given</h2>
+    <ul>
+    {% for feedback in feedbacks %}
+        <li>Book: {{ feedback.book_name }} - Rating: {{ feedback.rating_value }} (Feedback: {{ feedback.feedback_message }}, Given at: {{ feedback.feedback_time }})</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Sections</h2>
+    <ul>
+    {% for section in sections %}
+        <li>{{ section.section_name }} - {{ section.description }} (Created at: {{ section.date_created }})</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Books</h2>
+    <ul>
+    {% for book in books %}
+        <li>{{ book.book_name }} - {{ book.book_author }} (Created at: {{ book.date_created }}, Price: {{ book.DownloadPrice }})</li>
+    {% endfor %}
+    </ul>
+
+    <p>Total Requested Books: {{ total_requested_books }}</p>
+    <p>Total Issued Books: {{ total_issued_books }}</p>
+    <p>Regards,</p>
+    <p>Pustakalay Team</p>
+</body>
+</html>
