@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.sqlite3
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+backend/.env
+
+# Uploaded files / instance data
+backend/instance/
+
+# Celery
+celerybeat-schedule
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
